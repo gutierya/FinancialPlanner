@@ -2,10 +2,7 @@ package FinancialPlanner.app.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -19,12 +16,11 @@ public class Goal {
     private LocalDate checkDate;// initializes a week from start to check to remind user to save money
     private int weeksLeft;// will hold a # of how many weeks are left until complete
 
-/* commented out because user cannot be defined with User until being an entity first and be reference to in user
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private User user;// is mapped to user to hold all of his/her goals
 
- */
+
 
     //constructors
 
@@ -102,7 +98,7 @@ public class Goal {
     public void setWeeksLeft(int weeksLeft) {
         this.weeksLeft = weeksLeft;
     }
-/* commented out because user cannot be defined with user until being an entity first
+
     public User getUser() {
         return user;
     }
@@ -111,7 +107,7 @@ public class Goal {
         this.user = user;
     }
 
- */
+
 
     //toString() method
     @Override
