@@ -15,9 +15,9 @@ public class User {
     private String lastName;
 
     @OneToMany(mappedBy = "user")
-    private List<Goal> currentGoals;
+    private List<Goal> currentGoals = new ArrayList<Goal>();
     @OneToMany(mappedBy = "user")
-    private List<Goal> completedGoals;
+    private List<Goal> completedGoals = new ArrayList<Goal>();
 
     @Id
     @GeneratedValue
@@ -28,8 +28,7 @@ public class User {
     public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        currentGoals = new ArrayList<Goal>();
-        completedGoals = new ArrayList<Goal>();
+
     }
 
     public String getFirstName() {
