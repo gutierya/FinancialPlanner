@@ -63,7 +63,7 @@ public class GoalController {
 
 
     @PutMapping("/{goalID}")
-    public ResponseEntity<?> updateGoal(@PathVariable String goalID, @RequestBody Goal goal) {
+    public ResponseEntity<?> updateGoal(@PathVariable Long goalID, @RequestBody Goal goal) {
 
 //        Goal currentGoal = goalService.updateGoalByID()
         return null;
