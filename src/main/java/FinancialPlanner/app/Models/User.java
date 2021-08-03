@@ -1,7 +1,5 @@
 package FinancialPlanner.app.Models;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -61,4 +59,14 @@ public class User {
         currentGoals.remove(currentGoals.get(id));
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName=" + lastName +
+                ", currentGoals=" + currentGoals.toString() +
+                ", completedGoals=" + completedGoals.toString() +
+                '}';
+    }
 }
