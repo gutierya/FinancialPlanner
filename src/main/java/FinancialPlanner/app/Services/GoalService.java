@@ -1,5 +1,7 @@
 package FinancialPlanner.app.Services;
 
+import FinancialPlanner.app.Exceptions.UserExceptions;
+import FinancialPlanner.app.Models.Goal;
 import FinancialPlanner.app.Repos.GoalRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,7 @@ public class GoalService {
     }
 
     public Goal findById(Long goalId) {
-        return goalRepo.findById(goalId); // throw an exception
+        return goalRepo.findById(goalId).orElseThrow(()-> new UserExceptions(goalId)); // throw an exception
     }
 
     public void deleteGoal(Goal currentGoal) {
