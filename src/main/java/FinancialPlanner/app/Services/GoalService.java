@@ -29,6 +29,7 @@ public class GoalService {
     }
 
     public void deleteGoal(Long goalId) throws Exception {
+        /*
         Optional<Goal> goal = goalRepo.findById(goalId);
 
 
@@ -38,6 +39,11 @@ public class GoalService {
             throw new Exception("Cannot find goal by this id " + goalId);
         }
         goalRepo.delete(goal.get());
+
+         */
+        Goal goal = goalRepo.findById(goalId).orElseThrow(() -> new UserExceptions(goalId));
+
+        goalRepo.delete(goal);
     }
 
     public List<Goal> getAllGoals() {
