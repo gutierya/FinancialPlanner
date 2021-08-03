@@ -7,27 +7,60 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GoalService {
 
     @Autowired
-    GoalRepo goalRepo;
+    private final GoalRepo goalRepo;
 
-    public void saveGoal(Goal goal) {
+    public GoalService(GoalRepo goalRepo) {
+        this.goalRepo = goalRepo;
+    }
+
+    public Goal saveGoal(Goal goal) {
         goalRepo.save(goal);
+        return goal;
     }
 
     public Goal findById(Long goalId) {
-        return goalRepo.findById(goalId).orElseThrow(()-> new UserExceptions(goalId)); // throw an exception
+        return goalRepo.findById(goalId).orElseThrow(() -> new UserExceptions(goalId)); // throw an exception
     }
 
-    public void deleteGoal(Goal currentGoal) {
-        goalRepo.delete(currentGoal);
+    public void deleteGoal(Long goalId) throws Exception {
+        Optional<Goal> goal = goalRepo.findById(goalId);
+
+        if (goal == null) {
+            throw new Exception("Cannot find goal by this id " + goalId);
+        }
+        goalRepo.delete(goal.get());
     }
 
     public List<Goal> getAllGoals() {
         return goalRepo.findAll();
     }
 
+    /**
+     * update board by id
+     */
+    public Goal updateGoalByID(Long goalId) {
+
+
+        Goal goal = goalRepo.findById(goalId).orElseThrow(() -> new UserExceptions(goalId));
+
+        goal.setGoalName(goal.getGoalName());
+        goal.setGoalDescription(goal.getGoalDescription());
+        goal.setGoalPrice(goal.getGoalPrice());
+        goal.setStartDate(goal.getStartDate());
+        goal.setCheckDate(goal.getCheckDate());
+        goalRepo.save(goal);
+
+        return goal;
+    }
 }
+
+
+
+
+
