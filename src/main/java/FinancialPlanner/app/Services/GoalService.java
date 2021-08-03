@@ -44,8 +44,6 @@ public class GoalService {
      */
     public Goal updateGoalByID(Long goalId) {
 
-
-
         Goal goal = goalRepo.findById(goalId).orElseThrow(() -> new UserExceptions(goalId));
 
         goal.setGoalName(goal.getGoalName());
