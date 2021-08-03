@@ -1,25 +1,41 @@
 package FinancialPlanner.app.Models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
 public class Goal {
-    private @GeneratedValue @Id Long id;
+    private @GeneratedValue(strategy = GenerationType.IDENTITY) @Id Long id;
+    @NotBlank(message = "Goal name is needed!")
     private String goalName;
+    @NotBlank(message = "Goal description is needed!")
     private String goalDescription;// holds a brief description of what the goal is for
+    @NotNull(message = "Goal target amount is needed!")
     private double goalPrice;// holds the price tage of the goal
     private double goalCount;// hold how much you have saved
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate StartDate;// initializes start date of saving for goal
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate checkDate;// initializes a week from start to check to remind user to save money
     private int weeksLeft;// will hold a # of how many weeks are left until complete
+
+
+    /**
+     * every time we create a new object, this assigns the created new date
+     */
+    @PrePersist
+    protected void whenCreate() {this.StartDate = LocalDate.now();}
+
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private User user;// is mapped to user to hold all of his/her goals
-
 
 
     //constructors

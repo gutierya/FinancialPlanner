@@ -3,7 +3,9 @@ package FinancialPlanner.app.Controllers;
 
 import FinancialPlanner.app.Models.Goal;
 import FinancialPlanner.app.Services.ErrorsService;
+import FinancialPlanner.app.Services.GoalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -16,55 +18,54 @@ import java.net.URISyntaxException;
 @CrossOrigin
 public class GoalController {
 
-//    @Autowired - to call the service Kyle creates (can rename)
-//    private GoalService goalService;
+    @Autowired
+    private GoalService goalService;
 
     @Autowired
     private ErrorsService errorsService;
 
     //need to import goal class from evab/sebas
     @PostMapping("")
-    public ResponseEntity<?> createGoal(@RequestBody Goal goal, BindingResult result) throws URISyntaxException {
+    public ResponseEntity<?> createGoal(@Valid @RequestBody Goal goal, BindingResult result) throws URISyntaxException {
 
         ResponseEntity<?> errors = errorsService.ErrorsValidation(result);
         if(errors!=null) {return errors; }
 
-        //Todo: implement saving posted goal by calling goal service
-        return null;
+        Goal savedGoal = goalService.saveGoal(goal);
+        return new ResponseEntity<Goal>(goal, HttpStatus.CREATED);
+
     }
 
     //need to double check id name from goal class
     @GetMapping("/{goalID}")
-    public ResponseEntity<?> getGoalByID(@PathVariable String goalID) {
+    public ResponseEntity<?> getGoalByID(@PathVariable Long goalID) {
 
-        //Todo: implement finding goal by id by calling goal service
+        Goal gettingGoal = goalService.findById(goalID);
 
-        return null;
+        return new ResponseEntity<Goal>(gettingGoal, HttpStatus.OK);
+
     }
 
     @GetMapping("/all")
-    public ResponseEntity<?> getAllGoals() {
+    public Iterable<Goal> getAllGoals() {
 
-        //Todo: call goalboard service by returning goalservice."findallGoals"
-
-        return null;
+        return goalService.getAllGoals();
     }
 
 
     @DeleteMapping("/goalID")
-    public ResponseEntity<?> deleteGoal(@PathVariable String goalID) {
+    public ResponseEntity<?> deleteGoal(@PathVariable Long goalID) throws Exception {
 
-        //Todo: call goalboard service method that deletes goal by id
+        goalService.deleteGoal(goalID);
 
-        return null;
+        return new ResponseEntity<String>("Goal with id " + goalID + "was deleted.", HttpStatus.OK);
     }
 
-    ////need to import goal class from evab/sebas
+
     @PutMapping("/{goalID}")
-    public ResponseEntity<?> updateGoal(@PathVariable String goalID, @RequestBody Goal goal) {
+    public ResponseEntity<?> updateGoal(@PathVariable Long goalID, @RequestBody Goal goal) {
 
-        //Todo: call goal service to update goal by id
-
+//        Goal currentGoal = goalService.updateGoalByID()
         return null;
     }
 
