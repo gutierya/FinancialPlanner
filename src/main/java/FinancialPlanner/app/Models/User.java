@@ -2,23 +2,26 @@ package FinancialPlanner.app.Models;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
-@Component
+@Entity
 public class User {
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     private List<Goal> currentGoals;
-    @OneToMany(mappedBy = "userId")
+    @OneToMany(mappedBy = "user")
     private List<Goal> completedGoals;
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     public User(){}
 
@@ -57,4 +60,5 @@ public class User {
         //get goal, remove from list
         currentGoals.remove(currentGoals.get(id));
     }
+
 }
