@@ -1,6 +1,7 @@
 package FinancialPlanner.app.Controllers;
 
 
+import FinancialPlanner.app.Models.Goal;
 import FinancialPlanner.app.Services.ErrorsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,7 @@ public class GoalController {
 
     //need to import goal class from evab/sebas
     @PostMapping("")
-    public ResponseEntity<?> createGoal(@Valid RequestBody Goal goal, BindingResult result) throws URISyntaxException {
+    public ResponseEntity<?> createGoal(@RequestBody Goal goal, BindingResult result) throws URISyntaxException {
 
         ResponseEntity<?> errors = errorsService.ErrorsValidation(result);
         if(errors!=null) {return errors; }

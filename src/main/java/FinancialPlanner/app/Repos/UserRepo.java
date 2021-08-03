@@ -1,4 +1,9 @@
 package FinancialPlanner.app.Repos;
 
-public class UserRepo {
+import FinancialPlanner.app.Models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepo extends JpaRepository<User, Long> {
 }
