@@ -53,7 +53,7 @@ public class GoalController {
     }
 
 
-    @DeleteMapping("/goalID")
+    @DeleteMapping("/{goalID}")
     public ResponseEntity<?> deleteGoal(@PathVariable Long goalID) throws Exception {
 
         goalService.deleteGoal(goalID);

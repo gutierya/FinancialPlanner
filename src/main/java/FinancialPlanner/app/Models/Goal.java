@@ -28,8 +28,13 @@ public class Goal {
     /**
      * every time we create a new object, this assigns the created new date
      */
+
     @PrePersist
-    protected void whenCreate() {this.StartDate = LocalDate.now();}
+    protected void whenCreate() {this.StartDate = LocalDate.now();//takes today's date
+                                 this.checkDate = LocalDate.now().plusWeeks(1);// takes today's date and adds a week
+    }
+
+
 
 
 
@@ -41,12 +46,11 @@ public class Goal {
     //constructors
 
     public Goal(){}
-    public Goal(String goalName, String goalDescription, double goalPrice, LocalDate startDate) {
+    public Goal(String goalName, String goalDescription, double goalPrice) {
         this.goalName = goalName;
         this.goalDescription = goalDescription;
         this.goalPrice = goalPrice;
-        this.StartDate = startDate;
-        this.checkDate = startDate.plusWeeks(1);
+
 
     }
      //setters and getters
