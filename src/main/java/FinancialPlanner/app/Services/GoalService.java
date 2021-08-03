@@ -25,13 +25,16 @@ public class GoalService {
     }
 
     public Goal findById(Long goalId) {
-        return goalRepo.findById(goalId).orElseThrow(()-> new UserExceptions(goalId)); // throw an exception
+        return goalRepo.findById(goalId).orElseThrow(() -> new UserExceptions(goalId)); // throw an exception
     }
 
     public void deleteGoal(Long goalId) throws Exception {
         Optional<Goal> goal = goalRepo.findById(goalId);
 
+
+
         if(goal == null) {
+
             throw new Exception("Cannot find goal by this id " + goalId);
         }
         goalRepo.delete(goal.get());
@@ -46,27 +49,23 @@ public class GoalService {
      */
     public Goal updateGoalByID(Long goalId) {
 
-        //Not letting me remove 'optional' getting a weird message
-        Optional<Goal> goal = goalRepo.findById(goalId);
 
-        /*
-         *
-         * should be something like:
-         *
-         * //below calls setters then getters for a "goal" object"
-         * goal.setName(goal.getName());
-         * goal.setDescription(goal.getDesc());
-         *         etc ...
-         *
-         *
-         *
-         * goal.goalRepo.save(goal)
-         *
-         * return goal;
-         *
-         */
-        return null;
 
+        Goal goal = goalRepo.findById(goalId).orElseThrow(() -> new UserExceptions(goalId));
+
+        goal.setGoalName(goal.getGoalName());
+        goal.setGoalDescription(goal.getGoalDescription());
+        goal.setGoalPrice(goal.getGoalPrice());
+        goal.setStartDate(goal.getStartDate());
+        goal.setCheckDate(goal.getCheckDate());
+        goalRepo.save(goal);
+
+        return goal;
     }
 
 }
+
+
+
+
+
