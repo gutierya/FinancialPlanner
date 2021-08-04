@@ -14,9 +14,9 @@ public class User {
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user")////reference to the uncompleted form of user list
     private List<Goal> currentGoals = new ArrayList<Goal>();
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user2")//reference to the completed form of user list
     private List<Goal> completedGoals = new ArrayList<Goal>();
 
     @Id
