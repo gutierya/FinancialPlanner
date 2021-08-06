@@ -40,8 +40,10 @@ public class Goal {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    private User user;// is mapped to user to hold all of his/her goals
-
+    private User user;// is mapped to user to hold all of his/her on going goals
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private User user2;// is mapped to user to hold all of his/her complete goals
 
     //constructors
 
@@ -127,7 +129,13 @@ public class Goal {
         this.user = user;
     }
 
+    public User getUser2() {
+        return user2;
+    }
 
+    public void setUser2(User user2) {
+        this.user2 = user2;
+    }
 
     //toString() method
     @Override
