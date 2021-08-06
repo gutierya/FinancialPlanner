@@ -12,10 +12,10 @@ public class User {
     private String firstName;
     private String lastName;
 
-    @OneToMany(mappedBy = "user")
-    private List<Goal> currentGoals;
-    @OneToMany(mappedBy = "user")
-    private List<Goal> completedGoals;
+    @OneToMany(mappedBy = "user")////reference to the uncompleted form of user list
+    private List<Goal> currentGoals = new ArrayList<Goal>();
+    @OneToMany(mappedBy = "user2")//reference to the completed form of user list
+    private List<Goal> completedGoals = new ArrayList<Goal>();
 
     @Id
     @GeneratedValue
@@ -26,8 +26,7 @@ public class User {
     public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        currentGoals = new ArrayList<Goal>();
-        completedGoals = new ArrayList<Goal>();
+
     }
 
     public String getFirstName() {
