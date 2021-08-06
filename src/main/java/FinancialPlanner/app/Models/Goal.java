@@ -28,25 +28,31 @@ public class Goal {
     /**
      * every time we create a new object, this assigns the created new date
      */
+
     @PrePersist
-    protected void whenCreate() {this.StartDate = LocalDate.now();}
+    protected void whenCreate() {this.StartDate = LocalDate.now();//takes today's date
+                                 this.checkDate = LocalDate.now().plusWeeks(1);// takes today's date and adds a week
+    }
+
+
 
 
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    private User user;// is mapped to user to hold all of his/her goals
-
+    private User user;// is mapped to user to hold all of his/her on going goals
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private User user2;// is mapped to user to hold all of his/her complete goals
 
     //constructors
 
     public Goal(){}
-    public Goal(String goalName, String goalDescription, double goalPrice, LocalDate startDate) {
+    public Goal(String goalName, String goalDescription, double goalPrice) {
         this.goalName = goalName;
         this.goalDescription = goalDescription;
         this.goalPrice = goalPrice;
-        this.StartDate = startDate;
-        this.checkDate = startDate.plusWeeks(1);
+
 
     }
      //setters and getters
@@ -123,7 +129,13 @@ public class Goal {
         this.user = user;
     }
 
+    public User getUser2() {
+        return user2;
+    }
 
+    public void setUser2(User user2) {
+        this.user2 = user2;
+    }
 
     //toString() method
     @Override
