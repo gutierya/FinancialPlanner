@@ -36,13 +36,13 @@ public class GoalController {
 
         ResponseEntity<?> errors = errorsService.ErrorsValidation(result);
         if(errors!=null) {return errors; }
-        /*
-        Goal savedGoal = goalService.saveGoal(goal);
-         */
+
         //finds user and retrieves all information within user
         User user = userService.getUserById(userId);
         //sets the goal to user
         goal.setUser(user);
+        //this sets up how many weeks this goal will take
+        goal.settingUpGoal(goal.getGoalPrice(), goal.getGoalWeekly());
         //then adds the goal to goal repo
         goalService.saveGoal(goal);
 
