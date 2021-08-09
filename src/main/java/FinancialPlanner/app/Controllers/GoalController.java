@@ -1,7 +1,6 @@
 package FinancialPlanner.app.Controllers;
 
 
-import FinancialPlanner.app.Exceptions.UserExceptions;
 import FinancialPlanner.app.Models.Goal;
 import FinancialPlanner.app.Models.User;
 import FinancialPlanner.app.Services.ErrorsService;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URISyntaxException;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("goalview")
@@ -30,7 +28,6 @@ public class GoalController {
     @Autowired
     private ErrorsService errorsService;
 
-    //need to import goal class from evab/sebas
     @PostMapping("/{userId}")
     public ResponseEntity<?> createGoal(@PathVariable Long userId,@Valid @RequestBody Goal goal, BindingResult result) throws URISyntaxException {
 
@@ -49,7 +46,6 @@ public class GoalController {
         return new ResponseEntity<Goal>(goal, HttpStatus.CREATED);
     }
 
-    //need to double check id name from goal class
     @GetMapping("/{goalID}")
     public ResponseEntity<?> getGoalByID(@PathVariable Long goalID) {
 

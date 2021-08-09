@@ -35,9 +35,6 @@ public class Goal {
     }
 
 
-
-
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private User user;// is mapped to user to hold all of his/her on going goals
@@ -48,12 +45,11 @@ public class Goal {
     //constructors
 
     public Goal(){}
+
     public Goal(String goalName, String goalDescription, double goalPrice) {
         this.goalName = goalName;
         this.goalDescription = goalDescription;
         this.goalPrice = goalPrice;
-
-
     }
      //setters and getters
 
