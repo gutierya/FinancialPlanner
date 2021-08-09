@@ -38,9 +38,6 @@ public class Goal {
     }
 
 
-
-
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private User user;// is mapped to user to hold all of his/her on going goals
@@ -51,6 +48,7 @@ public class Goal {
     //constructors
 
     public Goal(){}
+
     public Goal(String goalName, String goalDescription, double goalPrice, double goalWeekly) {
         this.goalName = goalName;
         this.goalDescription = goalDescription;
@@ -70,6 +68,7 @@ public class Goal {
             this.goalCount+= this.goalWeekly;// this will add the money to the total saved to far
             this.checkDate = LocalDate.now().plusWeeks(1);// this will set a new check date for the next payment
         }
+
     }
      //setters and getters
 
