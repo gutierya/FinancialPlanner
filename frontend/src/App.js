@@ -1,10 +1,11 @@
 import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import TypoGraphy from '@material-ui/core/Typography'
+import Navbar from './Navbar';
 
-function WelcomeMessage() {
-  return <p>Welcome!</p>
-}
-
+/*
 function App() {
   return (
     <div className="App">
@@ -26,5 +27,14 @@ function App() {
     </div>
   )
 }
+*/
+
+const App = () => {
+	return (
+		<div className="App">
+			<Navbar />
+		</div>
+	);
+};
 
 export default App;
