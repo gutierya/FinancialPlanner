@@ -39,7 +39,7 @@ public class GoalServiceTest {
     @Test
     @DisplayName("Test to find goal id - success")
     void testFindGoalById() {
-        Goal goal = new Goal("buy a house", "a multi family house buy", 500000D);
+        Goal goal = new Goal("buy a house", "a multi family house buy", 500000D,50);
         doReturn(Optional.of(goal)).when(goalRepo).findById(1L);
 
         Optional<Goal> returnGoal = Optional.ofNullable(goalService.findById(1L));
