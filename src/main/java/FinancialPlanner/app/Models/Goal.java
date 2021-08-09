@@ -2,6 +2,7 @@ package FinancialPlanner.app.Models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -18,6 +19,8 @@ public class Goal {
     @NotNull(message = "Goal target amount is needed!")
     private double goalPrice;// holds the price tage of the goal
     private double goalCount;// hold how much you have saved
+    @NotNull(message = "Goal weekly target amount is needed!")
+    private double goalWeekly;//holds how much they will pay each week
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate StartDate;// initializes start date of saving for goal
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -46,10 +49,26 @@ public class Goal {
 
     public Goal(){}
 
-    public Goal(String goalName, String goalDescription, double goalPrice) {
+    public Goal(String goalName, String goalDescription, double goalPrice, double goalWeekly) {
         this.goalName = goalName;
         this.goalDescription = goalDescription;
         this.goalPrice = goalPrice;
+        this.goalWeekly = goalWeekly;
+
+    }
+    // this calculates how many weeks it will take to reach their goal
+    public void settingUpGoal(double goalPrice, double goalWeekly){
+        this.weeksLeft = (int)Math.ceil(goalPrice / goalWeekly);
+    }
+    // this will check itself to make sure its updating when need be
+    @Scheduled(cron="0 0 0 * * ?")// will be check everyday at 12:00AM
+    public void checkingGoal(){
+        if (LocalDate.now().equals(this.checkDate)){
+            this.weeksLeft--;//this will take away a week
+            this.goalCount+= this.goalWeekly;// this will add the money to the total saved to far
+            this.checkDate = LocalDate.now().plusWeeks(1);// this will set a new check date for the next payment
+        }
+
     }
      //setters and getters
 
@@ -115,6 +134,14 @@ public class Goal {
 
     public void setWeeksLeft(int weeksLeft) {
         this.weeksLeft = weeksLeft;
+    }
+
+    public double getGoalWeekly() {
+        return goalWeekly;
+    }
+
+    public void setGoalWeekly(double goalWeekly) {
+        this.goalWeekly = goalWeekly;
     }
 
     public User getUser() {
