@@ -35,19 +35,6 @@ class GoalControllerTest {
     @MockBean
     UserService userService;
 
-//    @Test
-//    void testAddGoal() throws Exception {
-//        String url = "/goalview";
-//
-//        mockMvc.perform(MockMvcRequestBuilders.post(url).content(asJsonString((new User("First1", "Last1"))))
-//        .contentType(MediaType.APPLICATION_JSON)
-//                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isCreated());
-//
-//        mockMvc.perform(MockMvcRequestBuilders.post(url).content(asJsonString((new Goal("goal name", "goal desc", 50D))))
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isCreated());
-//    }
-
     @Test
     void getOneGoal() throws Exception {
         mockMvc.perform( MockMvcRequestBuilders
