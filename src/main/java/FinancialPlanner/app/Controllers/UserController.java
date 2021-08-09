@@ -1,6 +1,5 @@
 package FinancialPlanner.app.Controllers;
 
-import FinancialPlanner.app.Models.Goal;
 import FinancialPlanner.app.Models.User;
 import FinancialPlanner.app.Services.ErrorsService;
 import FinancialPlanner.app.Services.UserService;
@@ -36,18 +35,25 @@ public class UserController {
         if(errors!=null) {return errors; }
         //saves user to repo
         userService.createUser(user);
-        //returns an Response of created
+        //returns a response of created
         return new ResponseEntity<User>(user, HttpStatus.CREATED);
     }
     // finds user by id
     @GetMapping("/{userID}")
     public User getGoalByID(@PathVariable Long userID) {
-        // is us
+
         User gettingUser = userService.getUserById(userID);
 
         new ResponseEntity<User>(gettingUser, HttpStatus.OK);//returns response that user was found
         return gettingUser;// returns the user
+    }
 
+    @DeleteMapping("/{userID}")
+    public ResponseEntity<?> deleteGoal(@PathVariable Long userID) throws Exception {
+
+        userService.deleteUser(userID);
+
+        return new ResponseEntity<String>("User with id " + userID + " was deleted.", HttpStatus.OK);
     }
 
 

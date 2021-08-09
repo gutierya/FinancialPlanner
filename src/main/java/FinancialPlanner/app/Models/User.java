@@ -26,7 +26,6 @@ public class User {
     public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-
     }
 
     public String getFirstName() {
@@ -58,6 +57,22 @@ public class User {
         currentGoals.remove(currentGoals.get(id));
     }
 
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setCurrentGoals(List<Goal> currentGoals) {
+        this.currentGoals = currentGoals;
+    }
+
+    public void setCompletedGoals(List<Goal> completedGoals) {
+        this.completedGoals = completedGoals;
+
     @Override
     public String toString() {
         return "User{" +
@@ -67,5 +82,6 @@ public class User {
                 ", currentGoals=" + currentGoals.toString() +
                 ", completedGoals=" + completedGoals.toString() +
                 '}';
+
     }
 }
