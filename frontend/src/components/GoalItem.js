@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Button from "./Button";
+import { Link } from "react-router-dom";
 class GoalItem extends Component {
   render() {
     return (
@@ -12,7 +12,15 @@ class GoalItem extends Component {
               <p>"My goal is ..." </p>
             </div>
             <div className="col-md-4 d-none d-lg-block">
-              <Button />
+              <div>
+                <React.Fragment>
+                  <Link to="/addGoal">Financial Goal</Link>
+                  <br></br>
+                  <Link to="/editGoal">Edit Financial Goal</Link>
+                  <br></br>
+                  <Link to="/deleteGoal">Delete Financial Goal</Link>
+                </React.Fragment>
+              </div>
             </div>
           </div>
         </div>
