@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import React, { Component } from 'react';
-import AppBar from '@material-ui/core/AppBar';
+import Contact from './Contact';
+import Home from './Home';
 import Toolbar from '@material-ui/core/Toolbar';
 import TypoGraphy from '@material-ui/core/Typography'
 import Navbar from './Navbar';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 /*
 function App() {
@@ -29,12 +31,26 @@ function App() {
 }
 */
 
-const App = () => {
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route path = '/' exact = {true} component={Home}/>
+          <Route path = '/Contact' exact={true} component = {Contact}/> 
+        </Switch>
+      </Router>
+    )
+  }
+}
+
+/* const App = () => {
 	return (
 		<div className="App">
 			<Navbar />
+      
 		</div>
 	);
-};
+}; */
 
 export default App;

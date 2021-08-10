@@ -7,7 +7,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import ModalDialog from '@material-ui/core/Modal';
+import Contact from './Contact';
+import { Link } from 'react-router-dom';
 
+   
 const useStyles = makeStyles(theme => ({
   menuButton: {
     marginRight: theme.spacing(2),
@@ -40,9 +43,20 @@ const Navbar = () => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" className={classes.title}>
-          SpyGlass
+        
+        <Typography color = "inherit" variant="h6" className={classes.title}>
+          <Link to = "/">SpyGlass</Link>
         </Typography>
+        
+        <Button color = "inherit" onClick={handleOpen}>
+          Who We Are
+        </Button>
+        <Button color = "link" variant="body2">
+          <Link to = "/Contact">Contact</Link>
+        </Button>
+
+        
+
         <Button color="inherit" onClick={handleOpen}>
           Signup
         </Button>
@@ -51,5 +65,6 @@ const Navbar = () => {
     </AppBar>
   );
 };
+
 
 export default Navbar;
