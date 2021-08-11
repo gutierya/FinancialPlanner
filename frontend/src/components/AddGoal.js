@@ -1,6 +1,10 @@
+/* eslint-disable */
 import React, { Component } from "react";
 import Navbar from "../Navbar";
-
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
+import { createGoal } from "../actions/projectActions";
+import classNames from "classnames";
 class AddGoal extends Component {
   constructor() {
     super();
@@ -12,6 +16,7 @@ class AddGoal extends Component {
       StartDate: "",
       goalPrice: "",
       goalWeekly: "",
+      errors: {},
     };
 
     this.onChange =
@@ -23,6 +28,15 @@ class AddGoal extends Component {
       this.onSubmit.bind(
         this
       ); /*enables the onSubmit function to be called per form below. Its at constructor level so it works for all inputs when submitting*/
+  }
+
+  /* life cycle hook - will recieve props*/
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors,
+      });
+    }
   }
 
   onChange(e) {
@@ -44,15 +58,23 @@ class AddGoal extends Component {
       goalWeekly: this.state.goalWeekly,
     };
 
+    this.props.createGoal(newGoal, this.props.history);
+
+    /* this line is for debugging purposes to send goal object to postman
     console.log(
       newGoal
-    ); /* this line is for debugging purposes to send goal object to postman*/
+    ); 
+    */
   }
 
   render() {
+    const { errors } = this.state;
+
     return (
       <div>
         <Navbar />
+
+        <h1>{errors.goalName}</h1>
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -141,4 +163,18 @@ class AddGoal extends Component {
     );
   }
 }
-export default AddGoal;
+
+/* setting up prop type */
+AddGoal.propTypes = {
+  /* telling react the createGoal function is a reqyuired function */
+
+  createGoal: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  errors: state.errors,
+});
+
+/* to help map our state to our props */
+export default connect(mapStateToProps, { createGoal })(AddGoal);
