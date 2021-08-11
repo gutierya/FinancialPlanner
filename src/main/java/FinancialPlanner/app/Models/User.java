@@ -71,8 +71,11 @@ public class User {
     }
 
     public void setCompletedGoals(List<Goal> completedGoals) {
-        this.completedGoals = completedGoals;
-    }
+
+        this.completedGoals = completedGoals;}
+
+
+
     @Override
     public String toString() {
         return "User{" +
