@@ -13,7 +13,7 @@ class Home extends Component {
       <div>
         <Navbar />
 
-        <GoalView />
+        
       </div>
     );
   }
