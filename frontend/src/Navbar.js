@@ -34,15 +34,6 @@ const Navbar = () => {
   return (
     <AppBar style={{ background: "#2E3B55" }} position="static">
       <Toolbar>
-        <IconButton
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          className={classes.menuButton}
-        >
-          <MenuIcon />
-        </IconButton>
-
         <Typography color="inherit" variant="h6" className={classes.title}>
           <Link to="/">SpyGlass</Link>
         </Typography>
@@ -51,7 +42,7 @@ const Navbar = () => {
           <Link to="/Goalview">Goals Dashboard</Link>
         </Button>
 
-        <Button color="inherit" onClick={handleOpen}>
+        <Button color="primary" onClick={handleOpen}>
         <Link to="/whoarewe"> Who We Are</Link>
          
         </Button>
