@@ -11,6 +11,7 @@ import GoalView from "./components/GoalView";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AddGoal from "./components/AddGoal";
 import SignIn from "./SignIn";
+import WhoAreWe from "./WhoAreWe";
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
           <Route path="/Goalview" exact={true} component={GoalView} />
           <Route path="/addGoal" exact={true} component={AddGoal} />
           <Route path="/signin" exact={true} component={SignIn} />
+          <Route path="/whoarewe" exact={true} component={WhoAreWe} />
         </Switch>
       </Router>
     );
