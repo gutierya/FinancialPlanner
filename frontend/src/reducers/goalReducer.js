@@ -1,4 +1,4 @@
-import { GET_GOALS } from "../actions/Types";
+import { GET_GOALS, GET_GOAL } from "../actions/Types";
 
 const initialState = {
   goals: [],
@@ -13,6 +13,13 @@ export default function (state = initialState, action) {
         ...state,
         goals: action.payload,
       };
+
+    case GET_GOAL:
+      return {
+        ...state,
+        goal: action.payload,
+      };
+
     default:
       return state;
   }

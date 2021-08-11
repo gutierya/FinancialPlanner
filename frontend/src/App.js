@@ -10,9 +10,12 @@ import Dashboard from "./components/GoalView";
 import GoalView from "./components/GoalView";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AddGoal from "./components/AddGoal";
-
-import { Provider } from "react-redux"; /* basically how we define the store we will use for our app */
+import SignIn from "./SignIn";
+import WhoAreWe from "./WhoAreWe";
+import { Provider } from "react-redux";
+/* basically how we define the store we will use for our app */
 import store from "./store";
+import updateGoal from "./components/updateGoal";
 class App extends Component {
   render() {
     return (
@@ -24,29 +27,13 @@ class App extends Component {
             <Route path="/Contact" exact={true} component={Contact} />
             <Route path="/goalview" exact={true} component={GoalView} />
             <Route path="/addGoal" exact={true} component={AddGoal} />
+            <Route path="/updateGoal/:id" exact={true} component={updateGoal} />
+            <Route path="/signin" exact={true} component={SignIn} />
+            <Route path="/whoarewe" exact={true} component={WhoAreWe} />
           </Switch>
         </Router>
       </Provider>
-
-import SignIn from "./SignIn";
-import WhoAreWe from "./WhoAreWe";
-
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Route path="/" exact={true} component={Home} />
-          <Route path="/Contact" exact={true} component={Contact} />
-          <Route path="/Goalview" exact={true} component={GoalView} />
-          <Route path="/addGoal" exact={true} component={AddGoal} />
-          <Route path="/signin" exact={true} component={SignIn} />
-          <Route path="/whoarewe" exact={true} component={WhoAreWe} />
-        </Switch>
-      </Router>
-
     );
   }
 }
-
 export default App;

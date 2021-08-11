@@ -9,7 +9,6 @@ import classNames from "classnames";
 
 import { Link } from "react-router-dom";
 
-
 class AddGoal extends Component {
   constructor() {
     super();
@@ -84,7 +83,7 @@ class AddGoal extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h5 className="display-4 text-center">
-                Create / Edit Financial Goal
+                Enter a new Financial Goal
               </h5>
               <hr />
               <form onSubmit={this.onSubmit}>
@@ -98,6 +97,7 @@ class AddGoal extends Component {
                     onChange={this.onChange}
                   />
                 </div>
+
                 <div className="form-group">
                   <input
                     type="text"
@@ -155,7 +155,7 @@ class AddGoal extends Component {
                     onChange={this.onChange}
                   ></input>
                 </div>
-                
+
                 <React.Fragment>
                   <Link to="/Goalview" className="btn btn-primary">
                     Submit
