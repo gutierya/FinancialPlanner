@@ -3,30 +3,16 @@ package FinancialPlanner.app;
 import FinancialPlanner.app.Models.Goal;
 import FinancialPlanner.app.Repos.GoalRepo;
 import FinancialPlanner.app.Services.GoalService;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import FinancialPlanner.app.Models.User;
-import FinancialPlanner.app.Repos.UserRepo;
-import FinancialPlanner.app.Services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import java.util.Arrays;
-import java.util.List;
+
 import java.util.Optional;
 
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.ArgumentMatchers.any;
 @SpringBootTest
 public class GoalServiceTest {
 
