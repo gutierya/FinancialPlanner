@@ -59,7 +59,11 @@ const Navbar = () => {
         </Button>
 
         <Button color="inherit" onClick={handleOpen}>
-          Signup
+          login
+        </Button>
+        <text>|</text>
+        <Button color="inherit" onClick={handleOpen}>
+          get started
         </Button>
       </Toolbar>
       <ModalDialog open={open} handleClose={handleClose} />
