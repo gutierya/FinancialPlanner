@@ -16,6 +16,7 @@ import { Provider } from "react-redux";
 /* basically how we define the store we will use for our app */
 import store from "./store";
 import updateGoal from "./components/updateGoal";
+
 class App extends Component {
   render() {
     return (
