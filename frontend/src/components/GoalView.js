@@ -31,6 +31,9 @@ class GoalView extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12">
+                <br></br>
+                <br></br>
+                <br></br>
                 <h1 className="display-4 text-center">Goals Dash</h1>
                 <br />
                 <CreateGoalButton />
