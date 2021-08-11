@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { deleteGoal } from "../actions/projectActions";
 class GoalItem extends Component {
+  onDeleteClick = (id) => {
+    this.props.deleteGoal(id);
+  };
+
   render() {
     const { goal } = this.props;
 
@@ -30,7 +37,11 @@ class GoalItem extends Component {
                   </button>
                   <br></br>
                   <br></br>
-                  <button type="button" class="btn btn-primary">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    onClick={this.onDeleteClick.bind(this, goal.id)}
+                  >
                     <Link to="/deleteGoal">Delete Financial Goal</Link>
                   </button>
                 </React.Fragment>
@@ -43,4 +54,8 @@ class GoalItem extends Component {
   }
 }
 
-export default GoalItem;
+GoalItem.propTypes = {
+  deleteGoal: PropTypes.func.isRequired,
+};
+
+export default connect(null, { deleteGoal })(GoalItem);

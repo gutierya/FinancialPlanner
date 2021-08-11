@@ -1,5 +1,5 @@
 import axios from "axios"; /* library import to talk to the backend*/
-import { GET_ERRORS, GET_GOAL, GET_GOALS } from "./Types";
+import { GET_ERRORS, GET_GOAL, GET_GOALS, DELETE_GOAL } from "./Types";
 
 /* history param - allows us to redirect the once form is submited */
 
@@ -12,7 +12,7 @@ export const createGoal = (goal, history) => async (dispatch) => {
     ); /* this route takes a valid goal object */
     history.push("/goalview/"); /* redirect to the new goal */
   } catch (err) {
-    dispatch({ type: GET_ERRORS, payload: err.response.data });
+    dispatch({ type: GET_ERRORS, payload: {} });
   }
 };
 
@@ -30,5 +30,15 @@ export const getGoal = (id, history) => async (dispatch) => {
     });
   } catch (error) {
     history.push("/goalview");
+  }
+};
+
+export const deleteGoal = (id) => async (dispatch) => {
+  if (window.confirm("Are you sure you want to delete this goal?")) {
+    await axios.delete(`http://localhost:8080/goalview/${id}`);
+    dispatch({
+      type: DELETE_GOAL,
+      payload: id,
+    });
   }
 };

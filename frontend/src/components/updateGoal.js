@@ -135,6 +135,7 @@ class updateGoal extends Component {
                     className="form-control form-control-lg"
                     placeholder="Goal Weekly Deposit Amount $ "
                     name="goalWeekly" /* holds how much they will pay each week */
+                    value={this.state.goalWeekly}
                     onChange={this.onChange}
                   ></input>
                 </div>

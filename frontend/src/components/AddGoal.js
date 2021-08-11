@@ -62,6 +62,7 @@ class AddGoal extends Component {
       goalWeekly: this.state.goalWeekly,
     };
 
+    /** redirecting to dashboard with 'this.props.history' */
     this.props.createGoal(newGoal, this.props.history);
 
     /* this line is for debugging purposes to send goal object to postman
@@ -99,6 +100,7 @@ class AddGoal extends Component {
                     name="iD"
                     value={this.state.id}
                     onChange={this.onChange}
+                    disabled
                   />
                 </div>
 

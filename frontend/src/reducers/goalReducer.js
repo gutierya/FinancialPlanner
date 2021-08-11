@@ -1,4 +1,4 @@
-import { GET_GOALS, GET_GOAL } from "../actions/Types";
+import { GET_GOALS, GET_GOAL, DELETE_GOAL } from "../actions/Types";
 
 const initialState = {
   goals: [],
@@ -18,6 +18,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         goal: action.payload,
+      };
+
+    case DELETE_GOAL:
+      return {
+        ...state,
+        goals: state.goals.filter((goal) => goal.id !== action.payload),
       };
 
     default:
