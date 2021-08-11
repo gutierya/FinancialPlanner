@@ -1,10 +1,15 @@
 /* eslint-disable */
 import React, { Component } from "react";
 import Navbar from "../Navbar";
+
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { createGoal } from "../actions/projectActions";
 import classNames from "classnames";
+
+import { Link } from "react-router-dom";
+
+
 class AddGoal extends Component {
   constructor() {
     super();
@@ -150,11 +155,12 @@ class AddGoal extends Component {
                     onChange={this.onChange}
                   ></input>
                 </div>
-
-                <input
-                  type="submit"
-                  className="btn btn-primary btn-block mt-4"
-                />
+                
+                <React.Fragment>
+                  <Link to="/Goalview" className="btn btn-primary">
+                    Submit
+                  </Link>
+                </React.Fragment>
               </form>
             </div>
           </div>

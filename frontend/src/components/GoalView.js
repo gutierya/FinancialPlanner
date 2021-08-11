@@ -3,10 +3,15 @@
 import React, { Component } from "react";
 import CreateGoalButton from "./createGoalButton";
 import GoalItem from "./GoalItem";
+
 import { connect } from "react-redux";
 import { getGoals } from "../actions/projectActions";
 import { Dashboard } from "@material-ui/icons";
 import PropTypes from "prop-types";
+
+import Navbar from "../Navbar";
+
+
 /*
 class based component that takes props and use life cycle hooks for 
 rendering using JSX
@@ -21,6 +26,7 @@ class GoalView extends Component {
     const { goals } = this.props.goal;
 
     return (
+
       <div className="projects">
         <div className="container">
           <div className="row">
@@ -35,6 +41,21 @@ class GoalView extends Component {
               {goals.map((goal) => (
                 <GoalItem key={goal.id} goal={goal} />
               ))}
+
+      <div>
+        <Navbar/>
+        <div className="projects">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <h1 className="display-4 text-center">Goals Dash</h1>
+                <br />
+                <CreateGoalButton />
+                <br />
+                <hr />
+                <GoalItem />
+              </div>
+
             </div>
           </div>
         </div>
