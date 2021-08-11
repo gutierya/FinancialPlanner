@@ -82,9 +82,13 @@ class AddGoal extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
+              <br />
+              <br />
+              <br />
               <h5 className="display-4 text-center">
                 Enter a new Financial Goal
               </h5>
+              <br></br>
               <hr />
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
