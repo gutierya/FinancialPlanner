@@ -52,14 +52,15 @@ const Navbar = () => {
         </Button>
 
         <Button color="inherit" onClick={handleOpen}>
-          Who We Are
+        <Link to="/whoarewe"> Who We Are</Link>
+         
         </Button>
         <Button color="link" variant="body2">
           <Link to="/Contact">Contact</Link>
         </Button>
 
         <Button color="inherit" onClick={handleOpen}>
-          login
+          <Link to="/signin">login</Link>
         </Button>
         <text>|</text>
         <Button color="inherit" onClick={handleOpen}>

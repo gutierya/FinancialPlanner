@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URISyntaxException;
 
+@CrossOrigin
 @RestController
 @RequestMapping("goalview")
-@CrossOrigin
 public class GoalController {
     @Autowired
     private UserService userService;
@@ -28,8 +28,9 @@ public class GoalController {
     @Autowired
     private ErrorsService errorsService;
 
+    @CrossOrigin
     @PostMapping("/{userId}")
-    public ResponseEntity<?> createGoal(@PathVariable Long userId,@Valid @RequestBody Goal goal, BindingResult result) throws URISyntaxException {
+    public ResponseEntity<?> createGoalWithUser(@PathVariable Long userId,@Valid @RequestBody Goal goal, BindingResult result) throws URISyntaxException {
 
         ResponseEntity<?> errors = errorsService.ErrorsValidation(result);
         if(errors!=null) {return errors; }
@@ -45,6 +46,17 @@ public class GoalController {
 
         return new ResponseEntity<Goal>(goal, HttpStatus.CREATED);
     }
+
+    @CrossOrigin
+    @PostMapping("")
+    public ResponseEntity<?> createGoal(@Valid @RequestBody Goal goal, BindingResult result) throws URISyntaxException {
+        ResponseEntity<?> errors = errorsService.ErrorsValidation(result);
+        if(errors!=null) {return errors; }
+        Goal savedGoal = goalService.saveGoal(goal);
+        return new ResponseEntity<Goal>(goal, HttpStatus.CREATED);
+    }
+
+
 
     @GetMapping("/{goalID}")
     public ResponseEntity<?> getGoalByID(@PathVariable Long goalID) {
