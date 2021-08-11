@@ -1,18 +1,14 @@
-/* eslint-disable */
 import React, { Component } from "react";
 import Navbar from "../Navbar";
-
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { createGoal } from "../actions/projectActions";
-import classNames from "classnames";
-
 import { Link } from "react-router-dom";
-
-class AddGoal extends Component {
+import { getGoal, createGoal } from "../actions/projectActions";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import classNames from "classnames";
+class updateGoal extends Component {
+  //set state
   constructor() {
     super();
-
     this.state = {
       id: "",
       goalName: "",
@@ -20,40 +16,40 @@ class AddGoal extends Component {
       StartDate: "",
       goalPrice: "",
       goalWeekly: "",
-      errors: {},
     };
-
-    this.onChange =
-      this.onChange.bind(
-        this
-      ); /*enables the onChange function to be called per input on form below. Its at constructor level so it works for all inputs.*/
-
-    this.onSubmit =
-      this.onSubmit.bind(
-        this
-      ); /*enables the onSubmit function to be called per form below. Its at constructor level so it works for all inputs when submitting*/
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  /* life cycle hook - will recieve props*/
+  /* component recieves props from backend/reducer*/
   componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({
-        errors: nextProps.errors,
-      });
-    }
-  }
+    const { id, goalName, goalDescription, StartDate, goalPrice, goalWeekly } =
+      nextProps.goal;
 
-  onChange(e) {
     this.setState({
-      [e.target.name]:
-        e.target
-          .value /* take whichever value and set it to the state aka values from the form */,
+      id,
+      goalName,
+      goalDescription,
+      StartDate,
+      goalPrice,
+      goalWeekly,
     });
   }
 
+  /* lifecyle hook */
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.props.getGoal(id, this.props.history);
+  }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
   onSubmit(e) {
-    e.preventDefault(); /* this line prevents form from reloading back to initial state when we click 'submit' */
-    const newGoal = {
+    e.preventDefault();
+
+    const updateGoal = {
       id: this.state.id,
       goalName: this.state.goalName,
       goalDescription: this.state.goalDescription,
@@ -61,34 +57,18 @@ class AddGoal extends Component {
       goalPrice: this.state.goalPrice,
       goalWeekly: this.state.goalWeekly,
     };
-
-    this.props.createGoal(newGoal, this.props.history);
-
-    /* this line is for debugging purposes to send goal object to postman
-    console.log(
-      newGoal
-    ); 
-    */
+    this.props.createGoal(updateGoal, this.props.history);
   }
 
   render() {
-    const { errors } = this.state;
-
     return (
       <div>
         <Navbar />
 
-        <h1>{errors.goalName}</h1>
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <br />
-              <br />
-              <br />
-              <h5 className="display-4 text-center">
-                Enter a new Financial Goal
-              </h5>
-              <br></br>
+              <h5 className="display-4 text-center">Update Financial Goal</h5>
               <hr />
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
@@ -96,9 +76,9 @@ class AddGoal extends Component {
                     type="text"
                     className="form-control form-control-lg"
                     placeholder="Unique Goal ID"
-                    name="iD"
+                    name="id"
                     value={this.state.id}
-                    onChange={this.onChange}
+                    disabled
                   />
                 </div>
 
@@ -155,7 +135,6 @@ class AddGoal extends Component {
                     className="form-control form-control-lg"
                     placeholder="Goal Weekly Deposit Amount $ "
                     name="goalWeekly" /* holds how much they will pay each week */
-                    value={this.state.goalWeekly}
                     onChange={this.onChange}
                   ></input>
                 </div>
@@ -174,17 +153,14 @@ class AddGoal extends Component {
   }
 }
 
-/* setting up prop type */
-AddGoal.propTypes = {
-  /* telling react the createGoal function is a reqyuired function */
-
+updateGoal.propTypes = {
+  getGoal: PropTypes.func.isRequired,
   createGoal: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
+  goal: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  errors: state.errors,
+  goal: state.goal.goal,
 });
 
-/* to help map our state to our props */
-export default connect(mapStateToProps, { createGoal })(AddGoal);
+export default connect(mapStateToProps, { getGoal, createGoal })(updateGoal);

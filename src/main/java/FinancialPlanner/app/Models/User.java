@@ -71,8 +71,13 @@ public class User {
     }
 
     public void setCompletedGoals(List<Goal> completedGoals) {
+<<<<<<< HEAD
+        this.completedGoals = completedGoals;}
+
+=======
         this.completedGoals = completedGoals;
     }
+>>>>>>> 3b33bda585d7d4ea4ac792dbf742fc496593293b
     @Override
     public String toString() {
         return "User{" +
