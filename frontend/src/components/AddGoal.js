@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "../Navbar";
+import { Link } from "react-router-dom";
 
 class AddGoal extends Component {
   constructor() {
@@ -128,11 +129,12 @@ class AddGoal extends Component {
                     onChange={this.onChange}
                   ></input>
                 </div>
-
-                <input
-                  type="submit"
-                  className="btn btn-primary btn-block mt-4"
-                />
+                
+                <React.Fragment>
+                  <Link to="/Goalview" className="btn btn-primary">
+                    Submit
+                  </Link>
+                </React.Fragment>
               </form>
             </div>
           </div>
