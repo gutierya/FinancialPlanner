@@ -25,20 +25,23 @@ class GoalView extends Component {
     const { goals } = this.props.goal;
 
     return (
-      <div className="projects">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <h1 className="display-4 text-center">Goals Dash</h1>
-              <br />
-              <CreateGoalButton />
+      <div>
+        <Navbar />
+        <div className="projects">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <h1 className="display-4 text-center">Goals Dash</h1>
+                <br />
+                <CreateGoalButton />
 
-              <br />
-              <hr />
+                <br />
+                <hr />
 
-              {goals.map((goal) => (
-                <GoalItem key={goal.id} goal={goal} />
-              ))}
+                {goals.map((goal) => (
+                  <GoalItem key={goal.id} goal={goal} />
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -15,6 +15,7 @@ import WhoAreWe from "./WhoAreWe";
 import { Provider } from "react-redux";
 /* basically how we define the store we will use for our app */
 import store from "./store";
+import updateGoal from "./components/updateGoal";
 class App extends Component {
   render() {
     return (
@@ -26,6 +27,7 @@ class App extends Component {
             <Route path="/Contact" exact={true} component={Contact} />
             <Route path="/goalview" exact={true} component={GoalView} />
             <Route path="/addGoal" exact={true} component={AddGoal} />
+            <Route path="/updateGoal/:id" exact={true} component={updateGoal} />
             <Route path="/signin" exact={true} component={SignIn} />
             <Route path="/whoarewe" exact={true} component={WhoAreWe} />
           </Switch>
