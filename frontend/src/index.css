@@ -8,7 +8,62 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.font-link {
+  font-family: 'DM Serif Display', serif;
+  color: white;
+}
+
+.section-link {
+  font-family: 'DM Serif Display', serif;
+  color: black;
+}
+
+.description-font {
+  font-family: 'PT Serif', serif;
+  color: black;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.about {
+  padding: 10%;
+  background: url("https://i.imgur.com/8qiVQgQ.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+header.masthead {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 4.5rem);
+  background: linear-gradient(to bottom, rgba(202, 188, 178, 0.8) 0%, rgba(85, 68, 57, 0.8) 100%), url("https://i.imgur.com/089f9Tv.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+header.masthead h1, header.masthead .h1 {
+  font-size: 2.25rem;
+}
+@media (min-width: 992px) {
+  header.masthead {
+    height: 100vh;
+    min-height: 40rem;
+    padding-top: 4.5rem;
+    padding-bottom: 0;
+  }
+  header.masthead p {
+    font-size: 1.15rem;
+  }
+  header.masthead h1, header.masthead .h1 {
+    font-size: 3rem;
+  }
+}
+@media (min-width: 1200px) {
+  header.masthead h1, header.masthead .h1 {
+    font-size: 3.5rem;
+  }
 }

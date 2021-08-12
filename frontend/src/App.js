@@ -16,6 +16,7 @@ import updateGoal from "./components/updateGoal";
 /* basically how we define the store we will use for our app */
 import store from "./store";
 
+
 class App extends Component {
   render() {
     return (
