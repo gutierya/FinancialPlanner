@@ -79,7 +79,6 @@ class AddGoal extends Component {
       <div>
         <Navbar />
 
-        <h1>{errors.goalName}</h1>
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -162,11 +161,10 @@ class AddGoal extends Component {
                   ></input>
                 </div>
 
-                <React.Fragment>
-                  <Link to="/Goalview" className="btn btn-primary">
-                    Submit
-                  </Link>
-                </React.Fragment>
+                <input
+                  type="submit"
+                  className="btn btn-primary btn-block mt-4"
+                />
               </form>
             </div>
           </div>

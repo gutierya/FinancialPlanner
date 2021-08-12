@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React, { Component } from "react";
 import CreateGoalButton from "./createGoalButton";
 import GoalItem from "./GoalItem";
@@ -27,7 +25,7 @@ class GoalView extends Component {
     return (
       <div>
         <Navbar />
-        <div className="projects">
+        <div className="goaldash">
           <div className="container">
             <div className="row">
               <div className="col-md-12">
