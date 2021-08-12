@@ -1,21 +1,21 @@
 import logo from "./logo.svg";
-import React, { Component } from "react";
-import Contact from "./Contact";
-import Home from "./Home";
 import Toolbar from "@material-ui/core/Toolbar";
 import TypoGraphy from "@material-ui/core/Typography";
 import Navbar from "./Navbar";
+import React, { Component } from "react";
+import Contact from "./Contact";
+import Home from "./Home";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Dashboard from "./components/GoalView";
 import GoalView from "./components/GoalView";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AddGoal from "./components/AddGoal";
 import SignIn from "./SignIn";
 import WhoAreWe from "./WhoAreWe";
 import { Provider } from "react-redux";
+import updateGoal from "./components/updateGoal";
 /* basically how we define the store we will use for our app */
 import store from "./store";
-import updateGoal from "./components/updateGoal";
+
 
 class App extends Component {
   render() {

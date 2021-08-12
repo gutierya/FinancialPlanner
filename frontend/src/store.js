@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import rootReducer from "./reducers";
 
 /* setting up initial state of app*/
-const initState = {};
+const initialState = {};
 
 /* creating middleware */
 const middleware = [thunk];
@@ -15,7 +15,7 @@ if (window.navigator.userAgent.includes("Chrome")) {
   /* passing an array of middle ware and pasting in redux dev tool extension*/
   store = createStore(
     rootReducer,
-    initState,
+    initialState,
     compose(
       applyMiddleware(...middleware),
       window.__REDUX_DEVTOOLS_EXTENSION__ &&
@@ -26,7 +26,7 @@ if (window.navigator.userAgent.includes("Chrome")) {
   /* for browsers that don't support chrome extension */
   store = createStore(
     rootReducer,
-    initState,
+    initialState,
     compose(applyMiddleware(...middleware))
   );
 }
