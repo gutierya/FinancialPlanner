@@ -18,9 +18,18 @@ class GoalItem extends Component {
             <div className="col-2"></div>
 
             <div className="col-lg-6 col-md-4 col-8">
-              <p>{goal.id}</p>
-              <h3>{goal.goalName}</h3>
-              <p>{goal.goalDescription} </p>
+              <h3 className="frontpg">
+                <strong>Goal ID #:</strong> {goal.id}
+              </h3>
+              <h3 className="frontpg">
+                <strong>Goal Name: </strong>
+                {goal.goalName}
+              </h3>
+
+              <h3 className="frontpg">
+                <strong>Goal Description: </strong>
+                {goal.goalDescription}
+              </h3>
             </div>
             <div className="col-md-4 d-none d-lg-block">
               <div>

@@ -36,7 +36,20 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.frontpg {
+  background-color: #ffffff;
+  font-size: larger;
+  line-height: 2em;
+  margin: .45m auto;
+  border-style: inset;
+}
+
+.goaldash {
+  background-color: #f0f0f0;
 }
